@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Journal</string>
+    <string name="title_text">Reimbursement</string>
+    <string name="billsImage">Bills</string>
+    <string name="get_started_text">Get Started</string>
+    <string name="email_hint">email</string>
+    <string name="password_hint">password_hint</string>
+    <string name="login_text">login_text</string>
+    <string name="password">password</string>
+    <string name="or_text">or</string>
+    <string name="create_account_button">create_account_button</string>
+    <string name="create_account">Create Account</string>
+    <string name="email">Email</string>
+    <string name="passwrd">Password</string>
+    <string name="logintext">Login</string>
+    <string name="login">Create Account</string>
+    <string name="username_hint">User name</string>
+    <string name="title_activity_post_bill">PostBillActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+</resources>
