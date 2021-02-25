@@ -9,4 +9,4 @@ iClaim SmartPhone Appication Anriod Apps front-end, made as part of Spring '21 t
 
 
 # Flow Diagram
-![Screenshot](screenshot.png)
+(Screenshot.png)
