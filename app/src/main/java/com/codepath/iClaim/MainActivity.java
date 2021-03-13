@@ -1,4 +1,4 @@
-package com.codepath.journal;
+package com.codepath.iClaim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.codepath.iClaim.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button getStartedButton;

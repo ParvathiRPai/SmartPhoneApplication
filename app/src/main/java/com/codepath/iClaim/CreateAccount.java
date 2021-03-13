@@ -1,4 +1,4 @@
-package com.codepath.journal;
+package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.codepath.iClaim.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import util.iClaimAPI;
 
 public class CreateAccount extends AppCompatActivity {
     private Button loginButton;
@@ -121,7 +124,9 @@ public class CreateAccount extends AppCompatActivity {
                                                                     progressBar.setVisibility(View.INVISIBLE);
                                                                     String name=task.getResult()
                                                                             .getString("username");
-
+                                                                    iClaimAPI iClaimAPI= util.iClaimAPI.getInstance();
+                                                                    iClaimAPI.setUserId(currentUserId);
+                                                                    iClaimAPI.setUsername(name);
                                                                     Intent intent=new Intent(CreateAccount.this, PostBillActivity.class );
                                                                     intent.putExtra("username", name);
                                                                     intent.putExtra("userId", currentUserId);
