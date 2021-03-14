@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/bills_row_username"
-            android:text="Gina"
+            android:text="bills"
             android:padding="3dp"
             android:layout_weight="1"
             android:textSize="17sp"
