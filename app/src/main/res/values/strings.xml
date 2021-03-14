@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Journal</string>
+    <string name="app_name">iClaim</string>
     <string name="title_text">Reimbursement</string>
     <string name="billsImage">Bills</string>
     <string name="get_started_text">Get Started</string>
@@ -16,9 +16,17 @@
     <string name="login">Create Account</string>
     <string name="username_hint">User name</string>
     <string name="title_activity_post_bill">PostBillActivity</string>
+    <string name="title_hint">Title</string>
+    <string name="bills">Details of your bills</string>
+    <string name="save_button">Save</string>
+
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+    <string name="menu_title">Add Bills</string>
+    <string name="signout">Signout</string>
+    <string name="no_thoughts_hint">Add a bill entry by clicking the "+" sign</string>
 </resources>
