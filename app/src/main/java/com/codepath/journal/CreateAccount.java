@@ -28,86 +28,103 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import Util.iClaimAPI;
+
 public class CreateAccount extends AppCompatActivity {
     private Button loginButton;
-    private Button createAccountButton;
+    private Button createAcctButton;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser currentUser;
 
-    //FireStore Connection
-    private FirebaseFirestore db= FirebaseFirestore.getInstance();
+    //Firestore connection
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private CollectionReference collectionReference=db.collection("Users");
+    private CollectionReference collectionReference = db.collection("Users");
+
 
     private EditText emailEditText;
     private EditText passwordEditText;
     private ProgressBar progressBar;
     private EditText userNameEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        firebaseAuth=FirebaseAuth.getInstance();
 
-        createAccountButton=findViewById(R.id.create_account);
-        progressBar=findViewById(R.id.create_acct_progress);
-        emailEditText=findViewById(R.id.email_account);
-        passwordEditText=findViewById(R.id.password_account);
-        userNameEditText=findViewById(R.id.username_account);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        authStateListener=new FirebaseAuth.AuthStateListener() {
+        createAcctButton = findViewById(R.id.create_account);
+        progressBar = findViewById(R.id.create_acct_progress);
+        emailEditText = findViewById(R.id.email_account);
+        passwordEditText = findViewById(R.id.password_account);
+        userNameEditText = findViewById(R.id.username_account);
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                currentUser=firebaseAuth.getCurrentUser();
-                if(currentUser!=null)
-                {
+                currentUser = firebaseAuth.getCurrentUser();
 
+                if (currentUser != null) {
+                    //user is already loggedin..
+                }else {
+                    //no user yet...
                 }
-                else
-                {
 
-                }
             }
         };
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+
+        createAcctButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(!TextUtils.isEmpty(emailEditText.getText().toString()) && !TextUtils.isEmpty(passwordEditText.getText().toString()) && !TextUtils.isEmpty(userNameEditText.getText().toString()))
-                {
-                    String email=emailEditText.getText().toString().trim();
-                    String password=passwordEditText.getText().toString().trim();
-                    String username=userNameEditText.getText().toString().trim();
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(emailEditText.getText().toString())
+                        && !TextUtils.isEmpty(passwordEditText.getText().toString())
+                        && !TextUtils.isEmpty(userNameEditText.getText().toString())) {
+
+                    String email = emailEditText.getText().toString().trim();
+                    String password = passwordEditText.getText().toString().trim();
+                    String username = userNameEditText.getText().toString().trim();
+
                     createUserEmailAccount(email, password, username);
+
+                }else {
+                    Toast.makeText(CreateAccount.this,
+                            "Empty Fields Not Allowed",
+                            Toast.LENGTH_LONG)
+                            .show();
                 }
-                else
-                {
-                    Toast.makeText(CreateAccount.this, "Empty Fields are not allowed", Toast.LENGTH_LONG).show();
-                }
+
+
+
             }
         });
 
     }
-    private void createUserEmailAccount(String email, String password, final String username)
-    {
-        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username))
-        {
+
+    private void createUserEmailAccount(String email, String password, final String username) {
+        if (!TextUtils.isEmpty(email)
+                && !TextUtils.isEmpty(password)
+                && !TextUtils.isEmpty(username)) {
+
             progressBar.setVisibility(View.VISIBLE);
+
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-                                currentUser=firebaseAuth.getCurrentUser();
-                                assert currentUser!=null;
-                                final String currentUserId=currentUser.getUid();
+                            if (task.isSuccessful()) {
+                                //we take user to AddJournalActivity
+                                currentUser = firebaseAuth.getCurrentUser();
+                                assert currentUser != null;
+                                final String currentUserId = currentUser.getUid();
 
-//                                User map to create user in user collection
-                                Map<String, String> userObj=new HashMap<>();
+                                //Create a user Map so we can create a user in the User collection
+                                Map<String, String> userObj = new HashMap<>();
                                 userObj.put("userId", currentUserId);
                                 userObj.put("username", username);
-//                                Save in the firestore database
+
+                                //save to our firestore database
                                 collectionReference.add(userObj)
                                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
@@ -116,17 +133,25 @@ public class CreateAccount extends AppCompatActivity {
                                                         .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                             @Override
                                                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                                if(Objects.requireNonNull(task.getResult().exists()))
-                                                                {
+                                                                if (Objects.requireNonNull(task.getResult()).exists()) {
                                                                     progressBar.setVisibility(View.INVISIBLE);
-                                                                    String name=task.getResult()
+                                                                    String name = task.getResult()
                                                                             .getString("username");
 
-                                                                    Intent intent=new Intent(CreateAccount.this, PostBillActivity.class );
+                                                                    iClaimAPI journalApi = iClaimAPI.getInstance(); //Global API
+                                                                    journalApi.setUserId(currentUserId);
+                                                                    journalApi.setUsername(name);
+
+                                                                    Intent intent = new Intent(CreateAccount.this,
+                                                                            PostBillActivity.class);
                                                                     intent.putExtra("username", name);
                                                                     intent.putExtra("userId", currentUserId);
                                                                     startActivity(intent);
 
+
+                                                                }else {
+
+                                                                    progressBar.setVisibility(View.INVISIBLE);
                                                                 }
 
                                                             }
@@ -140,11 +165,12 @@ public class CreateAccount extends AppCompatActivity {
 
                                             }
                                         });
-                            }
-                            else
-                            {
 
+
+                            }else {
+                                //something went wrong
                             }
+
 
                         }
                     })
@@ -154,18 +180,19 @@ public class CreateAccount extends AppCompatActivity {
 
                         }
                     });
-        }
-        else
-        {
+
+        }else {
 
         }
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        currentUser=firebaseAuth.getCurrentUser();
+
+        currentUser = firebaseAuth.getCurrentUser();
         firebaseAuth.addAuthStateListener(authStateListener);
+
     }
+
 }

@@ -14,19 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostBillActivity"></activity>
-
-<!--        <uses-library-->
-<!--            android:name="com.google.android.wearable"-->
-<!--            android:required="true" />-->
-<!--        &lt;!&ndash;-->
-<!--               Set to true if your app is Standalone, that is, it does not require the handheld-->
-<!--               app to run.-->
-<!--        &ndash;&gt;-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.wearable.standalone"-->
-<!--            android:value="true" />-->
-
+        <activity android:name=".BillListActivity"></activity>
+        <activity android:name=".PostBillActivity" /> <!-- <uses-library -->
+        <!-- android:name="com.google.android.wearable" -->
+        <!-- android:required="true" /> -->
+        <!-- &lt;!&ndash; -->
+        <!-- Set to true if your app is Standalone, that is, it does not require the handheld -->
+        <!-- app to run. -->
+        <!-- &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.wearable.standalone" -->
+        <!-- android:value="true" /> -->
         <activity android:name=".CreateAccount" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
@@ -36,14 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-<!--        <provider-->
-<!--            android:authorities="${applicationId}.here.this.library.provider"-->
-<!--            android:name="androidx.core.content.FileProvider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true"-->
-<!--            tools:replace="android:authorities">-->
-<!--        </provider>-->
     </application>
 
 </manifest>
