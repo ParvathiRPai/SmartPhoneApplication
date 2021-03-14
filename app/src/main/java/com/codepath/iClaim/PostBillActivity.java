@@ -1,4 +1,4 @@
-package com.codepath.journal;
+package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +28,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.sql.Time;
 import java.util.Date;
 
 import Util.iClaimAPI;
@@ -39,9 +38,9 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     private static final int GALLERY_CODE = 1;
     private Button saveButton;
     private ProgressBar progressBar;
-    private ImageView addPhotoButton;
+    private ImageView addbillsPhotoButton;
     private EditText titleEditText;
-    private EditText thoughtsEditText;
+    private EditText billsEditText;
     private TextView currentUserTextView;
     private static final String TAG= "PostBillActivity";
     private String currentUserId;
@@ -72,14 +71,14 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
         firebaseAuth=FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.post_progressBar);
         titleEditText=findViewById(R.id.post_title_et);
-        thoughtsEditText=findViewById(R.id.post_description_et);
+        billsEditText =findViewById(R.id.post_description_et);
         currentUserTextView=findViewById(R.id.post_username_textview);
 
         imageView=findViewById(R.id.post_imageView);
-        saveButton=findViewById(R.id.post_save_journal_button);
+        saveButton=findViewById(R.id.post_save_iClaim_button);
         saveButton.setOnClickListener(this);
-        addPhotoButton=findViewById(R.id.postCameraButton);
-        addPhotoButton.setOnClickListener(this);
+        addbillsPhotoButton =findViewById(R.id.postCameraButton);
+        addbillsPhotoButton.setOnClickListener(this);
         progressBar.setVisibility(View.INVISIBLE);
 
         if(iClaimAPI.getInstance() != null)
@@ -107,7 +106,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.post_save_journal_button:
+            case R.id.post_save_iClaim_button:
                 //save bills
                 saveBill();
                 break;
@@ -124,7 +123,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
 
     private void saveBill() {
         final String title=titleEditText.getText().toString().trim();
-        final String thoughts=thoughtsEditText.getText().toString().trim();
+        final String thoughts= billsEditText.getText().toString().trim();
         progressBar.setVisibility(View.VISIBLE);
 
 
@@ -140,7 +139,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String imageUrl=uri.toString();
-                                    // Todo: create a journal object
+                                    // Todo: create a iclaim object
                                     Bill bill =new Bill();
                                     bill.setTitle(title);
                                     bill.setThought(thoughts);
@@ -166,7 +165,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
 
                                                 }
                                             });
-                                                    //Todo: save journal instance
+                                                    //Todo: save iclaim instance
 
                                 }
                             });

@@ -18,7 +18,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/journal_row_username"
+            android:id="@+id/bills_row_username"
             android:text="Gina"
             android:padding="3dp"
             android:layout_weight="1"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content" />
 
         <ImageButton
-            android:id="@+id/journal_row_share_button"
+            android:id="@+id/bill_row_share_button"
             android:src="@android:drawable/ic_menu_share"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
@@ -43,16 +43,16 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/journal_image_list"
+            android:id="@+id/bills_image_list"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="fitXY"
-            android:src="@drawable/image_three"
+            android:src="@drawable/image4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/journal_title_list"
+            android:id="@+id/bills_title_list"
             android:padding="10dp"
             android:text="Title"
             android:textSize="18sp"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/journal_thought_list"
+            android:id="@+id/bills_updated_list"
             android:padding="10dp"
             android:text="Thoughts..."
             android:textSize="18sp"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/journal_timestamp_list"
+            android:id="@+id/bills_timestamp_list"
             android:padding="5dp"
             android:text="Date created"
             android:textStyle="italic"

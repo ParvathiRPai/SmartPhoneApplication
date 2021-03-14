@@ -11,8 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codepath.journal.BillListActivity;
-import com.codepath.journal.R;
+import com.codepath.iClaim.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -64,10 +63,10 @@ public class BillsRecyclerAdapter extends RecyclerView.Adapter<BillsRecyclerAdap
         public ViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
             context=ctx;
-            title=itemView.findViewById(R.id.journal_title_list);
-            thoughts=itemView.findViewById((R.id.journal_thought_list));
-            dataAdded=itemView.findViewById(R.id.journal_timestamp_list);
-            image=itemView.findViewById(R.id.journal_image_list);
+            title=itemView.findViewById(R.id.bills_title_list);
+            thoughts=itemView.findViewById((R.id.bills_updated_list));
+            dataAdded=itemView.findViewById(R.id.bills_timestamp_list);
+            image=itemView.findViewById(R.id.bills_image_list);
 
         }
     }

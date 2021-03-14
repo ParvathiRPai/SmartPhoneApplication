@@ -1,4 +1,4 @@
-package com.codepath.journal;
+package com.codepath.iClaim;
 
 import androidx.appcompat.app.AppCompatActivity;
 

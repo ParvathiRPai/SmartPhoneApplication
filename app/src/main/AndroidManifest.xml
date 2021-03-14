@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.codepath.journal">
+    package="com.codepath.iClaim">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BillListActivity"></activity>
-        <activity android:name=".PostBillActivity" /> <!-- <uses-library -->
+        <activity android:name="com.codepath.iClaim.BillListActivity"></activity>
+        <activity android:name="com.codepath.iClaim.PostBillActivity" /> <!-- <uses-library -->
         <!-- android:name="com.google.android.wearable" -->
         <!-- android:required="true" /> -->
         <!-- &lt;!&ndash; -->
@@ -25,9 +25,9 @@
         <!-- <meta-data -->
         <!-- android:name="com.google.android.wearable.standalone" -->
         <!-- android:value="true" /> -->
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.codepath.iClaim.CreateAccount" />
+        <activity android:name="com.codepath.iClaim.LoginActivity" />
+        <activity android:name="com.codepath.iClaim.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

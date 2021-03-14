@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/list_no_thoughts"
+        android:id="@+id/list_no_bills"
         android:layout_width="306dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"

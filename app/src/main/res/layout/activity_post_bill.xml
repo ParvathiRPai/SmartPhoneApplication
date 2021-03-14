@@ -13,7 +13,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/image_three"
+        android:src="@drawable/image4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/post_imageView"
-        app:layout_constraintVertical_bias="0.538"
+        app:layout_constraintVertical_bias="0.7"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <EditText
@@ -84,7 +84,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/input_outline"
         android:ems="10"
-        android:hint="@string/thoughts"
+        android:hint="@string/bills"
         android:inputType="textMultiLine"
         android:padding="15dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/post_description_et" />
 
     <Button
-        android:id="@+id/post_save_journal_button"
+        android:id="@+id/post_save_iClaim_button"
         android:layout_width="378dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"

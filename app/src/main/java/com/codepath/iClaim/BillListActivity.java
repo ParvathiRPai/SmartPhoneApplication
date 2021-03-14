@@ -1,4 +1,4 @@
-package com.codepath.journal;
+package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,7 +48,7 @@ public class BillListActivity extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         user=firebaseAuth.getCurrentUser();
 
-        noBillEntry=findViewById(R.id.list_no_thoughts);
+        noBillEntry=findViewById(R.id.list_no_bills);
         billList=new ArrayList<>();
 
         recyclerView=findViewById(R.id.recyclerView);
