@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     billApi.setUserId(snapshot.getString("userId"));
 
                                                     //Go to ListActivity
-                                                    startActivity(new Intent(LoginActivity.this, PostBillActivity.class));
+                                                    startActivity(new Intent(LoginActivity.this, BillListActivity.class));
                                                 }
 
                                             }
