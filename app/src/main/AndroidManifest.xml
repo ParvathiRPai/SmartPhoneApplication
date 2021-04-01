@@ -7,6 +7,9 @@
 
     <uses-feature android:name="android.hardware.type.watch" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,8 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.codepath.iClaim.BillListActivity"></activity>
-        <activity android:name="com.codepath.iClaim.PostBillActivity" /> <!-- <uses-library -->
+        <activity android:name=".FirebaseVisionActivity"></activity>
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ocr" />
+
+        <activity android:name=".BillListActivity" />
+        <activity android:name=".PostBillActivity" /> <!-- <uses-library -->
         <!-- android:name="com.google.android.wearable" -->
         <!-- android:required="true" /> -->
         <!-- &lt;!&ndash; -->
@@ -25,9 +34,9 @@
         <!-- <meta-data -->
         <!-- android:name="com.google.android.wearable.standalone" -->
         <!-- android:value="true" /> -->
-        <activity android:name="com.codepath.iClaim.CreateAccount" />
-        <activity android:name="com.codepath.iClaim.LoginActivity" />
-        <activity android:name="com.codepath.iClaim.MainActivity">
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

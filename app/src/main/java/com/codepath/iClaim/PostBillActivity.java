@@ -27,7 +27,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
 
+import java.io.IOException;
 import java.util.Date;
 
 import Util.iClaimAPI;
@@ -197,6 +201,8 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
             {
                 imageUri=data.getData();
                 imageView.setImageURI(imageUri);
+                FirebaseVisionActivity activity = new FirebaseVisionActivity(this);
+                activity.firebaseVisionImage(imageUri);
             }
         }
 
@@ -219,5 +225,6 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
+
 
 }
