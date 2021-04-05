@@ -30,4 +30,10 @@
     <string name="signout">Signout</string>
     <string name="no_thoughts_hint">Add a bill entry by clicking the "+" sign</string>
     <string name="username_textview_hint">username</string>
+    <string name="headpostactivity">New Bill Claim</string>
+    <string name="detectedtexthint">Total Amount</string>
+    <string name="welcometextview">Welcome</string>
+    <string name="balance_text">Balance Remaining:</string>
+    <string name="amount_text">Amount</string>
+    <string name="billbutton">Past Bills</string>
 </resources>

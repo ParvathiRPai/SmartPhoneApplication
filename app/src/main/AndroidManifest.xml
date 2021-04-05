@@ -17,14 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirebaseVisionActivity"></activity>
+        <activity android:name=".DashboardActivity"></activity>
+        <activity
+            android:name=".FirebaseVisionActivity"
+            tools:ignore="Instantiatable" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
 
         <activity android:name=".BillListActivity" />
-        <activity android:name=".PostBillActivity" /> <!-- <uses-library -->
+        <activity android:name=".PostBillActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.iClaim.BillListActivity" />
+        </activity> <!-- <uses-library -->
         <!-- android:name="com.google.android.wearable" -->
         <!-- android:required="true" /> -->
         <!-- &lt;!&ndash; -->

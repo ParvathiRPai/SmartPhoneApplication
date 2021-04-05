@@ -2,6 +2,7 @@ package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +59,8 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     private Uri imageUri;
     private ImageView imageView;
 
+    private TextView detectedTextView;
+
     // Connection to Firestore
 
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -70,6 +74,11 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_bill);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         storageReference= FirebaseStorage.getInstance().getReference();
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -84,6 +93,8 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
         addbillsPhotoButton =findViewById(R.id.postCameraButton);
         addbillsPhotoButton.setOnClickListener(this);
         progressBar.setVisibility(View.INVISIBLE);
+
+        detectedTextView = findViewById(R.id.detectedtextview);
 
         if(iClaimAPI.getInstance() != null)
         {
@@ -201,7 +212,8 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
             {
                 imageUri=data.getData();
                 imageView.setImageURI(imageUri);
-                FirebaseVisionActivity activity = new FirebaseVisionActivity(this);
+                //for text recognition
+                FirebaseVisionActivity activity = new FirebaseVisionActivity(this, detectedTextView);
                 activity.firebaseVisionImage(imageUri);
             }
         }
@@ -226,5 +238,14 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+
