@@ -1,84 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="8dp"
-    app:cardUseCompatPadding="true"
-    android:layout_height="wrap_content">
+    android:elevation="12dp"
+    app:cardCornerRadius="15dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:elevation="10dp"
-        android:alpha="0.8"
-        android:gravity="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:elevation="10dp"
+        android:gravity="end"
+        android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/bills_row_username"
-            android:text="bills"
-            android:padding="3dp"
-            android:layout_weight="1"
-            android:textSize="17sp"
-            android:gravity="start"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:padding="3dp"
+            android:text="bills"
+            android:textSize="17sp" />
 
         <ImageButton
             android:id="@+id/bill_row_share_button"
-            android:src="@android:drawable/ic_menu_share"
-            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_share" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/bills_image_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="fitXY"
-            android:src="@drawable/image4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:src="@drawable/image4" />
 
         <TextView
             android:id="@+id/bills_title_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Title"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bills_updated_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="15dp"
             android:text="Thoughts..."
             android:textSize="18sp"
-            android:paddingTop="15dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="15dp"
-            android:textStyle="normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/bills_timestamp_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Date created"
-            android:textStyle="italic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="italic" />
 
     </LinearLayout>
 

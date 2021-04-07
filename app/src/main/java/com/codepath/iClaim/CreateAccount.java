@@ -120,9 +120,11 @@ public class CreateAccount extends AppCompatActivity {
                                 final String currentUserId = currentUser.getUid();
 
                                 //Create a user Map so we can create a user in the User collection
-                                Map<String, String> userObj = new HashMap<>();
+                                Map<String, Object> userObj = new HashMap<>();
                                 userObj.put("userId", currentUserId);
                                 userObj.put("username", username);
+                                //shreya
+                                userObj.put("balance",500.00);
 
                                 //save to our firestore database
                                 collectionReference.add(userObj)
@@ -137,15 +139,22 @@ public class CreateAccount extends AppCompatActivity {
                                                                     progressBar.setVisibility(View.INVISIBLE);
                                                                     String name = task.getResult()
                                                                             .getString("username");
+                                                                    //shreya
+                                                                    String ref = task.getResult().getId();
 
                                                                     iClaimAPI journalApi = iClaimAPI.getInstance(); //Global API
                                                                     journalApi.setUserId(currentUserId);
                                                                     journalApi.setUsername(name);
-
+                                                                    //shreya
+                                                                    journalApi.setBalance(500.00);
+                                                                    journalApi.setRef(ref);
+                                                                    //changed PostBillActivity to DashboardActivity
                                                                     Intent intent = new Intent(CreateAccount.this,
-                                                                            PostBillActivity.class);
+                                                                            DashboardActivity.class);
                                                                     intent.putExtra("username", name);
                                                                     intent.putExtra("userId", currentUserId);
+
+                                                                    intent.putExtra("balance",500.00);
                                                                     startActivity(intent);
 
 

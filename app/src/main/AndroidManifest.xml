@@ -26,7 +26,11 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
 
-        <activity android:name=".BillListActivity" />
+        <activity android:name=".BillListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.iClaim.DashboardActivity" />
+        </activity>
         <activity android:name=".PostBillActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

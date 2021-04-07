@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,24 +18,33 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.api.SystemParameterOrBuilder;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.SnapshotMetadata;
+import com.google.firebase.firestore.Transaction;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.text.TextRecognition;
-import com.google.mlkit.vision.text.TextRecognizer;
 
-import java.io.IOException;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Util.iClaimAPI;
 import model.Bill;
@@ -67,7 +77,6 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     private StorageReference storageReference;
 
     private CollectionReference collectionReference=db.collection("iClaim");
-
 
 
     @Override
@@ -115,6 +124,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
 
             }
         };
+
     }
 
     @Override
@@ -124,6 +134,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
             case R.id.post_save_iClaim_button:
                 //save bills
                 saveBill();
+                adjustBalance();
                 break;
 
             case R.id.postCameraButton:
@@ -229,7 +240,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    protected  void onStop()
+    protected void onStop()
     {
         super.onStop();
         if(firebaseAuth!=null)
@@ -246,6 +257,66 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //adjust balance in firestore after bill is saved in storage
+    private void adjustBalance(){
+
+        String docRef = iClaimAPI.getInstance().getRef();
+        DocumentReference userRef =  db.collection("Users").document(docRef);
+
+
+        String text = detectedTextView.getText().toString();
+        Double amt;
+        Double balance;
+
+        Pattern p = Pattern.compile("\\d+(((\\.)(\\d{0,2})){0,1})");
+        Matcher m = p.matcher(text);
+
+        if (m.find()) {
+            amt = Double.valueOf(m.group());
+            balance = iClaimAPI.getInstance().getBalance();
+            if(balance > amt ){
+
+                db.runTransaction(new Transaction.Function<Void>() {
+                    @Override
+                    public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+                        DocumentSnapshot snapshot = transaction.get(userRef);
+                        //System.out.println("testing: "+ snapshot);
+
+                        DecimalFormat df = new DecimalFormat("####0.00");
+                        df.setRoundingMode(RoundingMode.UP);
+                        Double newbalance = Double.valueOf(df.format((balance - amt)));
+
+                        transaction.update(userRef, "balance", newbalance);
+                        iClaimAPI.getInstance().setBalance(newbalance);
+
+                        // Success
+                        return null;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Transaction success!");
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Transaction failure.", e);
+                            }
+                        });
+
+            }
+            else{
+
+                Log.d("adjustbalance failed: ",amt.toString());
+                Toast.makeText(this, "Amount exceeds limit. Needs Review!!",Toast.LENGTH_LONG).show();
+
+            }
+
+        }
     }
 }
 

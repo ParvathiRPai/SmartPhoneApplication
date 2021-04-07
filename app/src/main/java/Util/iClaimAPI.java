@@ -5,6 +5,9 @@ import android.app.Application;
 public class iClaimAPI extends Application {
     private String username;
     private String userId;
+    private Double balance;
+
+    private String ref;
 
     private static iClaimAPI instance;
 
@@ -31,5 +34,21 @@ public class iClaimAPI extends Application {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public String getRef() {
+        return ref;
     }
 }

@@ -21,12 +21,19 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FirebaseVisionActivity extends AppCompatActivity {
 
     private Context context;
     private TextView detectedTextView;
+
+
 
     public FirebaseVisionActivity(Context context, TextView detectedTextView ) {
         this.context = context;
@@ -74,36 +81,35 @@ public class FirebaseVisionActivity extends AppCompatActivity {
     private void processText(Text visionText) {
 
         String resultText = visionText.getText();
-       // List<Text.TextBlock> blocks = visionText.getTextBlocks();
+
+
 
         if(visionText.getTextBlocks().isEmpty()){
             Toast.makeText(context, "No text found or Text may not be clear", Toast.LENGTH_LONG).show();
         }
         else {
             String blockText = "";
-            //String lineText = "";
+            String lineText = "";
             for (Text.TextBlock block : visionText.getTextBlocks()){
                 Point[] blockCornerPoints = block.getCornerPoints();
                 Rect blockFrame = block.getBoundingBox();
                 if(block.getText().contains("Total")) {
-                    blockText = block.getText() + "\n";
+                    for (Text.Line line : block.getLines()) {
+                        //lineText = lineText + line.getText() + "\n";
+                        if (line.getText().contains("Total")) {
+                            lineText = line.getText() + "\n";
+                        }
+                        Point[] lineCornerPoints = line.getCornerPoints();
+                        Rect lineFrame = line.getBoundingBox();
+                        for (Text.Element element : line.getElements()) {
+                            String elementText = element.getText();
+                            Point[] elementCornerPoints = element.getCornerPoints();
+                            Rect elementFrame = element.getBoundingBox();
+                        }
+                    }
                 }
-                //code commented for now, might use in future
-                /*for (Text.Line line : block.getLines()) {
-                    //lineText = lineText + line.getText() + "\n";
-                    if(line.getText().contains("Total")) {
-                        blockText = block.getText() + "\n";
-                    }
-                    Point[] lineCornerPoints = line.getCornerPoints();
-                    Rect lineFrame = line.getBoundingBox();
-                    for (Text.Element element : line.getElements()) {
-                        String elementText = element.getText();
-                        Point[] elementCornerPoints = element.getCornerPoints();
-                        Rect elementFrame = element.getBoundingBox();
-                    }
-                }*/
             }
-            detectedTextView.setText(blockText);
+            detectedTextView.setText(lineText);
 
         }
     }
