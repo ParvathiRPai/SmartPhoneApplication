@@ -1,6 +1,7 @@
 package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,6 +55,10 @@ public class BillListActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -65,22 +70,22 @@ public class BillListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.action_add:
-                if(user != null && firebaseAuth != null)
-                {
-                    startActivity(new Intent(BillListActivity.this,PostBillActivity.class));
+                if (user != null && firebaseAuth != null) {
+                    startActivity(new Intent(BillListActivity.this, PostBillActivity.class));
                 }
                 break;
 
             case R.id.action_signout:
-                if(user != null && firebaseAuth != null)
-                {
+                if (user != null && firebaseAuth != null) {
                     firebaseAuth.signOut();
-                    startActivity(new Intent(BillListActivity.this,MainActivity.class));
+                    startActivity(new Intent(BillListActivity.this, MainActivity.class));
                 }
                 break;
+            case android.R.id.home:
+                this.finish();
+                return true;
 
 
         }

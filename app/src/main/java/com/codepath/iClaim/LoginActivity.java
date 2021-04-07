@@ -96,12 +96,15 @@ public class LoginActivity extends AppCompatActivity {
                                             if(!queryDocumentSnapshots.isEmpty()) {
                                                 progressBar.setVisibility(View.INVISIBLE);
                                                 for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                                                    String ref = snapshot.getId();
                                                     iClaimAPI billApi = iClaimAPI.getInstance();
                                                     billApi.setUsername(snapshot.getString("username"));
                                                     billApi.setUserId(snapshot.getString("userId"));
+                                                    billApi.setBalance((Double)snapshot.get("balance"));
+                                                    billApi.setRef(ref);
 
                                                     //Go to ListActivity
-                                                    startActivity(new Intent(LoginActivity.this, BillListActivity.class));
+                                                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                                                 }
 
                                             }

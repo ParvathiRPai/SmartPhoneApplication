@@ -29,4 +29,14 @@
     <string name="menu_title">Add Bills</string>
     <string name="signout">Signout</string>
     <string name="no_thoughts_hint">Add a bill entry by clicking the "+" sign</string>
+    <string name="username_textview_hint">username</string>
+    <string name="headpostactivity">New Bill Claim</string>
+    <string name="detectedtexthint">Total Amount</string>
+    <string name="welcometextview">Welcome</string>
+    <string name="balance_text">Balance Remaining:</string>
+    <string name="amount_text">Amount</string>
+    <string name="billbutton">View Bills</string>
+    <string name="buttonadd">New Claim</string>
+    <string name="annualamt_text">Annual Balance</string>
+    <string name="value_text">500.00</string>
 </resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/slide1"
+    tools:context=".DashboardActivity">
+
+    <Button
+        android:id="@+id/buttonclaim"
+        android:layout_width="162dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="512dp"
+        android:layout_marginEnd="8dp"
+        android:background="#4527A0"
+        android:text="@string/buttonadd"
+        android:textColor="#DFDEE4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="182dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/welcometextview"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#4527A0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username_textView"
+        android:layout_width="262dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/username_textview_hint"
+        android:textAlignment="center"
+        android:textColor="#1565C0"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/balancetextView"
+        android:layout_width="170dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="180dp"
+        android:text="@string/balance_text"
+        android:textColor="#4527A0"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_textView" />
+
+    <TextView
+        android:id="@+id/amounttextView"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="180dp"
+        android:hint="@string/amount_text"
+        android:textColor="#09090B"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/balancetextView"
+        app:layout_constraintTop_toBottomOf="@+id/username_textView" />
+
+    <Button
+        android:id="@+id/buttonbill"
+        android:layout_width="157dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="512dp"
+        android:background="#4527A0"
+        android:text="@string/billbutton"
+        android:textColor="#DFDEE4"
+        app:layout_constraintEnd_toStartOf="@+id/buttonclaim"
+        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/annualamttextview"
+        android:layout_width="161dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/annualamt_text"
+        android:textColor="#4527A0"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/valuetextView"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_textView" />
+
+    <TextView
+        android:id="@+id/valuetextView"
+        android:layout_width="77dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/value_text"
+        android:textColor="#09090B"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
