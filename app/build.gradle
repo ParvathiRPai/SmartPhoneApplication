@@ -48,11 +48,10 @@ android {
 }
 
 configurations {
-    all {
-        implementation.exclude module:'protobuf-java'
-        implementation.exclude module:'proto-google-common-protos'
-
-    }
+   implementation {
+        exclude group: 'com.google.firebase', module: 'protolite-well-known-types'
+        exclude group: 'com.google.protobuf', module: 'protobuf-javalite'
+   }
 }
 
 dependencies {
@@ -80,8 +79,9 @@ dependencies {
     implementation 'ai.api:sdk:2.0.7@aar'
     implementation 'ai.api:libai:1.6.12'
     // Java V2
-    implementation "com.google.cloud:google-cloud-dialogflow:2.0.0"
+    implementation 'com.google.cloud:google-cloud-dialogflow:2.0.0'
+   
     // for Remote Procedure Call to avoid "No functional channel service provider found" error while creating SessionsClient
-    implementation 'io.grpc:grpc-okhttp:1.29.0'
+     implementation 'io.grpc:grpc-okhttp:1.29.0'
 }
 
