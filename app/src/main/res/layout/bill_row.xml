@@ -20,13 +20,19 @@
 
         <TextView
             android:id="@+id/bills_row_username"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
             android:padding="3dp"
             android:text="bills"
             android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/bill_row_speak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/speak" />
 
         <ImageButton
             android:id="@+id/bill_row_share_button"

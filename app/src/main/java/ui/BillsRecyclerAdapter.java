@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.iClaim.R;
+import com.codepath.iClaim.Test2Speech;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,10 +23,12 @@ import model.Bill;
 public class BillsRecyclerAdapter extends RecyclerView.Adapter<BillsRecyclerAdapter.ViewHolder> {
     private Context context;
     private List<Bill> billList;
+    private Test2Speech t2s;
 
     public BillsRecyclerAdapter(Context context, List<Bill> billList) {
         this.context = context;
         this.billList = billList;
+        this.t2s = new Test2Speech(context);
     }
 
     @NonNull
@@ -38,6 +42,10 @@ public class BillsRecyclerAdapter extends RecyclerView.Adapter<BillsRecyclerAdap
     public void onBindViewHolder(@NonNull BillsRecyclerAdapter.ViewHolder  viewHolder, int position) {
         Bill bill= billList.get(position);
         String imageUrl;
+
+        viewHolder.bill_row_button.setOnClickListener(v -> {
+            t2s.speakBillRow(context, bill.getTitle(), bill.getThought());
+        });
 
         viewHolder.title.setText(bill.getTitle());
         viewHolder.thoughts.setText(bill.getThought());
@@ -59,6 +67,7 @@ public class BillsRecyclerAdapter extends RecyclerView.Adapter<BillsRecyclerAdap
         public ImageView image;
         String userId;
         String username;
+        private final AppCompatImageButton bill_row_button;
 
         public ViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
@@ -67,6 +76,7 @@ public class BillsRecyclerAdapter extends RecyclerView.Adapter<BillsRecyclerAdap
             thoughts=itemView.findViewById((R.id.bills_updated_list));
             dataAdded=itemView.findViewById(R.id.bills_timestamp_list);
             image=itemView.findViewById(R.id.bills_image_list);
+            bill_row_button = itemView.findViewById(R.id.bill_row_speak);
 
         }
     }

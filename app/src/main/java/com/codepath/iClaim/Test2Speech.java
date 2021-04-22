@@ -51,6 +51,23 @@ public class Test2Speech implements TextToSpeech.OnInitListener {
 
     }
 
+    public void speakBillRow(Context context, String bill, String thoughts) {
+
+        String toSpeak = "Hi User, let's add you bill";
+
+        iClaimAPI i = iClaimAPI.getInstance();
+
+        if (i.getUsername() != null && bill != null && thoughts != null ) {
+            bill = bill.isEmpty() ? "new" : bill;
+            toSpeak = "Hi " + i.getUsername() + ", your " + bill + " bill thoughts are " + thoughts;
+        }
+
+        Toast.makeText(context, toSpeak, Toast.LENGTH_SHORT).show();
+        int ret = tts.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, "");
+        Log.i("TTS", "speakBill: " + ret);
+
+    }
+
     @Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
