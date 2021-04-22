@@ -37,6 +37,8 @@ public class DashboardActivity extends AppCompatActivity {
     private Button buttonBill;
     private Button buttonClaim;
 
+    private Test2Speech t2s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +80,8 @@ public class DashboardActivity extends AppCompatActivity {
                 }
             }
         });
+
+        t2s = new Test2Speech(this);
     }
 
 
@@ -95,6 +99,11 @@ public class DashboardActivity extends AppCompatActivity {
                     firebaseAuth.signOut();
                     startActivity(new Intent(DashboardActivity.this, MainActivity.class));
                 }
+            case R.id.action_speak_ms:
+                if (user != null && firebaseAuth != null) {
+                    t2s.speakBalance(this);
+                }
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -115,5 +124,9 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        t2s.done();
+    }
 }
