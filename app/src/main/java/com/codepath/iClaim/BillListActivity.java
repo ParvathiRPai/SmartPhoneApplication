@@ -41,6 +41,7 @@ public class BillListActivity extends AppCompatActivity {
     private BillsRecyclerAdapter billsRecyclerAdapter;
     private CollectionReference collectionReference=db.collection("iClaim");
     private TextView noBillEntry;
+    private Test2Speech t2s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class BillListActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        t2s = new Test2Speech(this);
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -81,6 +84,12 @@ public class BillListActivity extends AppCompatActivity {
                 if (user != null && firebaseAuth != null) {
                     firebaseAuth.signOut();
                     startActivity(new Intent(BillListActivity.this, MainActivity.class));
+                }
+                break;
+
+            case R.id.action_speak:
+                if (user != null && firebaseAuth != null) {
+                    t2s.speakBalance(this);
                 }
                 break;
             case android.R.id.home:
@@ -124,5 +133,12 @@ public class BillListActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        t2s.done();
     }
 }

@@ -2,15 +2,14 @@ package com.codepath.iClaim;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,18 +21,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.api.SystemParameterOrBuilder;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.SnapshotMetadata;
 import com.google.firebase.firestore.Transaction;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -78,15 +73,13 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
 
     private CollectionReference collectionReference=db.collection("iClaim");
 
+    private Test2Speech t2s;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_bill);
-
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         storageReference= FirebaseStorage.getInstance().getReference();
 
@@ -104,6 +97,7 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
         progressBar.setVisibility(View.INVISIBLE);
 
         detectedTextView = findViewById(R.id.detectedtextview);
+        t2s = new Test2Speech(this);
 
         if(iClaimAPI.getInstance() != null)
         {
@@ -250,15 +244,26 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bills,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_speak_pb:
+                if (user != null && firebaseAuth != null) {
+                    t2s.speakBill(this, titleEditText.getText().toString(), detectedTextView.getText().toString());
+                }
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
-
 
     //adjust balance in firestore after bill is saved in storage
     private void adjustBalance(){
@@ -317,6 +322,12 @@ public class PostBillActivity extends AppCompatActivity implements View.OnClickL
             }
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        t2s.done();
     }
 }
 
