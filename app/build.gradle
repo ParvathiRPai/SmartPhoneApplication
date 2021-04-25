@@ -47,12 +47,12 @@ android {
     }
 }
 
-configurations {
-    all {
-        implementation.exclude module:'protobuf-java'
-        implementation.exclude module:'proto-google-common-protos'
-
-    }
+ configurations.all {
+    exclude group: 'com.google.protobuf', module: 'protobuf-java'
+    exclude group: 'com.google.api.grpc', module: 'proto-google-common-protos'
+    exclude module: 'protolite-well-known-types'
+    exclude group: 'com.google.protobuf', module: 'protobuf-lite'
+    exclude group: 'com.google.protobuf', module: 'protobuf-javalite'
 }
 
 dependencies {
