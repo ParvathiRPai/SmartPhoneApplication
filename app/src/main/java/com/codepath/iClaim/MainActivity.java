@@ -2,8 +2,8 @@ package com.codepath.iClaim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,15 +14,13 @@ import com.bot.codepath.DialogflowCredentials;
 
 import java.util.UUID;
 
-
 public class MainActivity extends AppCompatActivity {
-
+    private Button getStartedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button chatFab = findViewById(R.id.chatFab);
         chatFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,16 +28,20 @@ public class MainActivity extends AppCompatActivity {
                 openChatbot(view);
             }
         });
+        getStartedButton=findViewById(R.id.startButton);
+        getStartedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+            }
+        });
     }
 
     public void openChatbot(View view) {
-        // provide your Dialogflow's Google Credential JSON saved under RAW folder in resources
         DialogflowCredentials.getInstance().setInputStream(getResources().openRawResource(R.raw.auth));
 
         ChatbotSettings.getInstance().setChatbot( new Chatbot.ChatbotBuilder()
-//                .setDoAutoWelcome(false) // True by Default, False if you do not want the Bot to greet the user Automatically. Dialogflow agent must have a welcome intent to handle this
-//                .setChatBotAvatar(getDrawable(R.drawable.avatarBot)) // provide avatar for your bot if default is not required
-//                .setChatUserAvatar(getDrawable(R.drawable.avatarUser)) // provide avatar for your the user if default is not required
                 .setShowMic(true) // False by Default, True if you want to use Voice input from the user to chat
                 .build());
         Intent intent = new Intent(MainActivity.this, ChatbotActivity.class);
@@ -51,4 +53,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }

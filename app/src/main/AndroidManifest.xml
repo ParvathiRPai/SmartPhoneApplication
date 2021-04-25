@@ -35,7 +35,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codepath.iClaim.BillListActivity" />
-        </activity> <!-- <uses-library -->
+        </activity>
+        <activity
+            android:name="com.bot.codepath.ChatbotActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" /><!-- <uses-library -->
         <!-- android:name="com.google.android.wearable" -->
         <!-- android:required="true" /> -->
         <!-- &lt;!&ndash; -->
