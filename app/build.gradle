@@ -45,13 +45,10 @@ android {
         exclude 'META-INF/INDEX.LIST.txt'
 
     }
-}
 
-configurations {
-    all {
-        implementation.exclude module:'protobuf-java'
-        implementation.exclude module:'proto-google-common-protos'
-
+    configurations {
+        implementation.exclude group: 'com.google.api.grpc'
+        implementation.exclude module: 'protobuf-java'
     }
 }
 
@@ -76,12 +73,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    // ToDo
-    implementation 'ai.api:sdk:2.0.7@aar'
-    implementation 'ai.api:libai:1.6.12'
-    // Java V2
-    implementation "com.google.cloud:google-cloud-dialogflow:2.0.0"
-    // for Remote Procedure Call to avoid "No functional channel service provider found" error while creating SessionsClient
-    implementation 'io.grpc:grpc-okhttp:1.29.0'
+    implementation project(path: ':app:iClaimchatlibrary')
+
 }
 
