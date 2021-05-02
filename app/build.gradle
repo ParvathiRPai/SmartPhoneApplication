@@ -22,8 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', "ClientAccessToken", CLIENT_ACCESS_TOKEN
-            resValue 'string', "ClientAccessToken", CLIENT_ACCESS_TOKEN
+
         }
     }
 
@@ -34,25 +33,6 @@ android {
         abortOnError false
     }
 
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/INDEX.LIST'
-        exclude 'META-INF/INDEX.LIST.txt'
-
-    }
-}
-
-configurations {
-    all {
-        implementation.exclude module:'protobuf-java'
-        implementation.exclude module:'proto-google-common-protos'
-
-    }
 }
 
 dependencies {
@@ -76,12 +56,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    // ToDo
-    implementation 'ai.api:sdk:2.0.7@aar'
-    implementation 'ai.api:libai:1.6.12'
-    // Java V2
-    implementation "com.google.cloud:google-cloud-dialogflow:2.0.0"
-    // for Remote Procedure Call to avoid "No functional channel service provider found" error while creating SessionsClient
-    implementation 'io.grpc:grpc-okhttp:1.29.0'
+    def android_libs_version = "28.0.0"
+    implementation 'com.android.support:multidex:1.0.3'
+    //implementation "com.android.support:appcompat-v7:$android_libs_version"
+    implementation "com.android.support:design:$android_libs_version"
+
+    def aws_version = "2.16.+"
+    implementation ("com.amazonaws:aws-android-sdk-lex:$aws_version@aar") { transitive=true }
+    implementation ("com.amazonaws:aws-android-sdk-mobile-client:$aws_version@aar") { transitive=true }
+
 }
 
