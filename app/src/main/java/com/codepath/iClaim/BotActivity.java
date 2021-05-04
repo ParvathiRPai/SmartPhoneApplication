@@ -170,6 +170,7 @@ public class BotActivity extends AppCompatActivity {
             Log.d(TAG, " -- New conversation started");
             addMessage(new TextMessage(text, "tx", getCurrentTimeStamp()));
             lexInteractionClient.textInForTextOut(text, null);
+            clearTextInput();
     }
 
     /**
