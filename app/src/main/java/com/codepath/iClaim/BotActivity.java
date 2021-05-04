@@ -167,19 +167,9 @@ public class BotActivity extends AppCompatActivity {
             Log.d(TAG, "text null or empty");
             return;
         }
-
-        if (!inConversation) {
             Log.d(TAG, " -- New conversation started");
-            startNewConversation();
             addMessage(new TextMessage(text, "tx", getCurrentTimeStamp()));
             lexInteractionClient.textInForTextOut(text, null);
-            inConversation = true;
-        } else {
-            Log.d(TAG, " -- Responding with text: " + text);
-            addMessage(new TextMessage(text, "tx", getCurrentTimeStamp()));
-            convContinuation.continueWithTextInForTextOut(text);
-        }
-        clearTextInput();
     }
 
     /**
