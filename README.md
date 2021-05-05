@@ -32,7 +32,7 @@ This android application provides a platform for easy enterprise reimbursements.
   * Introductional conversation with bot about iClaim application.
   * Make conversations more engaging and increase completion rate.
   * Used AWS Lex for intent based conversation.
-  * Used AWS Cognito for OAuth2.0 feature. Please follow the [steps](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-configuring-app-integration.html/) for awsconfiguration.json file. 
+  * Used AWS Cognito for OAuth2.0 feature. Please follow the [steps](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-configuring-app-integration.html) for awsconfiguration.json file. 
   * Update the aawsconfiguration.json in below path. [**SmartPhoneApplication/tree/chatbot/app/src/main/res/raw]**
        ```json
          {
