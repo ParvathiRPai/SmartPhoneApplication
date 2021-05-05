@@ -29,7 +29,31 @@ This android application provides a platform for easy enterprise reimbursements.
   * Now you can build and run the application. When you create account from the app it will add user to Users in firebase authentication and when you upload a bill it will create collection in firestore and a folder in Storage to save images uploaded by users.
 
 * ChatBot
-
+  * Introductional conversation with bot about iClaim application.
+  * Make conversations more engaging and increase completion rate.
+  * Used AWS Lex for intent based conversation.
+  * Used AWS Cognito for OAuth2.0 feature. Please follow the [steps](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-configuring-app-integration.html/) for awsconfiguration.json file. 
+  * Update the aawsconfiguration.json in below path. [**SmartPhoneApplication/tree/chatbot/app/src/main/res/raw]**
+       ```json
+         {
+         "Version": "1.0",
+         "CredentialsProvider": {
+           "CognitoIdentity": {
+             "Default": {
+               .....
+             }
+           }
+         },
+         "<IdentityManager>": {
+           "Default": {}
+         },
+         "<CognitoUserPool>": {
+           "Default": {
+              .....
+           }
+         }
+        }
+       ```
 ### Features
 * Firebase custom Login
 * Upload image to Firebase Storage
@@ -93,6 +117,6 @@ This android application provides a platform for easy enterprise reimbursements.
 
 * ChatBot Flow diagram
 
-<img src="images/Lex.jpg" width="400" height="450"> 
+<img src="images/lex.png" width="450" height="800"> 
 
 
