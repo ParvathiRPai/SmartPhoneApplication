@@ -36,12 +36,12 @@ This android application provides a platform for easy enterprise reimbursements.
 * Text Recognition - using Firebase Vision ML kit to identify the total amount from the upload bill's image.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
-* ChatBot - conversational bot using Google DialogFlow
+* ChatBot - conversational bot using AWS Lex
 
 ### UI Screenshots
 * Home page
   
-  <img src="images/image1.png" width="450" height="800">
+  <img src="images/image.png" width="450" height="800">
 
 * Sign in page
   
@@ -86,4 +86,13 @@ This android application provides a platform for easy enterprise reimbursements.
 * Storage of bills to maintan polyglot persistance
   
   ![](images/image7.png)
+
+* ChatBot
+
+![](images/chat.png)
+
+* ChatBot Flow diagram
+
+![](images/Lex.png)
+
 
