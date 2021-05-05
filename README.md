@@ -93,6 +93,6 @@ This android application provides a platform for easy enterprise reimbursements.
 
 * ChatBot Flow diagram
 
-![](images/Lex.jpg)
+<img src="images/Lex.jpg" width="400" height="450"> 
 
 
