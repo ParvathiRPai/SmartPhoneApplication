@@ -33,10 +33,10 @@ This android application provides a platform for easy enterprise reimbursements.
 ### Features
 * Firebase custom Login
 * Upload image to Firebase Storage
-* Text Recognition - using Firebase Vision ML kit to identify the total amount from the upload bill's image.
+* Text Recognition - using Google ML kit to identify the total amount from the upload bill's image.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
-* ChatBot - conversational bot using Google DialogFlow
+* ChatBot - conversational bot using Amazon Lex
 
 ### UI Screenshots
 * Home page
