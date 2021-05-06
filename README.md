@@ -29,19 +29,43 @@ This android application provides a platform for easy enterprise reimbursements.
   * Now you can build and run the application. When you create account from the app it will add user to Users in firebase authentication and when you upload a bill it will create collection in firestore and a folder in Storage to save images uploaded by users.
 
 * ChatBot
-
+  * Introductional conversation with bot about iClaim application.
+  * Make conversations more engaging and increase completion rate.
+  * Used AWS Lex for intent based conversation.
+  * Used AWS Cognito for OAuth2.0 feature. Please follow the [steps](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-configuring-app-integration.html) for awsconfiguration.json file. 
+  * Update the aawsconfiguration.json in below path. [**SmartPhoneApplication/tree/chatbot/app/src/main/res/raw]**
+       ```json
+         {
+         "Version": "1.0",
+         "CredentialsProvider": {
+           "CognitoIdentity": {
+             "Default": {
+               .....
+             }
+           }
+         },
+         "<IdentityManager>": {
+           "Default": {}
+         },
+         "<CognitoUserPool>": {
+           "Default": {
+              .....
+           }
+         }
+        }
+       ```
 ### Features
 * Firebase custom Login
 * Upload image to Firebase Storage
 * Text Recognition - using Google ML kit to identify the total amount from the upload bill's image.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
-* ChatBot - conversational bot using Amazon Lex
+* ChatBot - conversational bot using AWS Lex
 
 ### UI Screenshots
 * Home page
   
-  <img src="images/image1.png" width="450" height="800">
+  <img src="images/image.png" width="450" height="800">
 
 * Sign in page
   
@@ -86,4 +110,13 @@ This android application provides a platform for easy enterprise reimbursements.
 * Storage of bills to maintan polyglot persistance
   
   ![](images/image7.png)
+
+* ChatBot
+
+![](images/chat.png)
+
+* ChatBot Flow diagram
+
+<img src="images/lex.png" width="450" height="800"> 
+
 
