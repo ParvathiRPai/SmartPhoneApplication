@@ -98,29 +98,27 @@ This android application provides a platform for easy enterprise reimbursements.
 
 * ChatBot
 
-![](images/chat.png)
+ ![](images/chat.png)
+
+* Clicking in : gives access to sign out button
+  
+ ![](images/image10.png)
 
 #### Firebase Console screenshots
 
 * Authetication in firebase
   
-![](images/image5.png)
-
-* Clicking in : gives access to sign out button
-  
-  ![](images/image10.png)
+ ![](images/image5.png)
 
 * Storage in firestore
   
-![](images/image6.png)
+ ![](images/image6.png)
 
 * Storage of bills to maintan polyglot persistance
   
-  ![](images/image7.png)
+ ![](images/image7.png)
 
-#### Amazon Lex Flow Diagram
-
-* ChatBot Flow diagram
+#### ChatBot Flow diagram
 
 <img src="images/lex.png" width="450" height="800"> 
 
