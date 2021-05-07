@@ -25,6 +25,7 @@ This android application provides a platform for easy enterprise reimbursements.
   * Add project - give the name as "iclaim" and create project
   * In Android Studio open this repo and go to Tools > Firebase. In the Firebase assistance, click on Authentication > Authenticate using custom Authentication System.
   * Click on Connect to Firebase, this will redirect you to your firebase console. Select the iclaim project created in previous step and connect.
+  * Previous step will create a google-services.json file (app/google-service.json).
   * In your project in Firebase console go to Authentication and make sure that Email/Password is enabled under Sign-in method.
   * Now you can build and run the application. When you create account from the app it will add user to Users in firebase authentication and when you upload a bill it will create collection in firestore and a folder in Storage to save images uploaded by users.
 
@@ -57,7 +58,7 @@ This android application provides a platform for easy enterprise reimbursements.
 ### Features
 * Firebase custom Login
 * Upload image to Firebase Storage
-* Text Recognition - using Firebase Vision ML kit to identify the total amount from the upload bill's image.
+* Text Recognition - using Google ML kit to identify the total amount from the upload bill's image.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
 * ChatBot - conversational bot using AWS Lex
@@ -95,28 +96,42 @@ This android application provides a platform for easy enterprise reimbursements.
 
   <img src="images/Text2Speech.png" width="450" height="800">
 
-* Authetication in firebase
-  
-![](images/image5.png)
+* ChatBot
+
+ ![](images/chat.png)
 
 * Clicking in : gives access to sign out button
   
-  ![](images/image10.png)
+ ![](images/image10.png)
+
+#### Firebase Console screenshots
+
+* Authetication in firebase
+  
+ ![](images/image5.png)
 
 * Storage in firestore
   
-![](images/image6.png)
+ ![](images/image6.png)
 
 * Storage of bills to maintan polyglot persistance
   
-  ![](images/image7.png)
+ ![](images/image7.png)
 
-* ChatBot
-
-![](images/chat.png)
-
-* ChatBot Flow diagram
+#### ChatBot Flow diagram
 
 <img src="images/lex.png" width="450" height="800"> 
 
+
+### References
+* https://firebase.google.com/docs/android/setup
+* https://firebase.google.com/docs/auth/android/start?authuser=0 
+* https://developers.google.com/ml-kit/vision/text-recognition/android#java
+* https://developer.android.com/reference/android/speech/tts/TextToSpeech
+* https://aws.amazon.com/lex/
+* https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-authentication-flow.html
+* https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-configuring-app-integration.html
+* https://developer.android.com/samples
+* https://docs.aws.amazon.com/sdk-for-android/
+* https://docs.aws.amazon.com/mobile-sdk/index.html
 
