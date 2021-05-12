@@ -18,6 +18,9 @@ This android application provides a platform for easy enterprise reimbursements.
 
 ### [Project Proposal doc](https://github.com/ParvathiRPai/SmartPhoneApplication/blob/main/Documentation/CMPE277-Project%20Proposal.pdf)
 
+### [Link to Video Demo](https://drive.google.com/file/d/1OWp3jGYVzEpzYkXNri37ipsZdaESnsac/view?usp=sharing)
+### [Presentation Slides](https://docs.google.com/presentation/d/1zdTLvfJuRFlwzEwINc1C5bkyqbxkEJSGs1TX03U3Xzk/edit?usp=sharing)
+
 ### How to Setup application in your environment
 * Clone the repo or download the zip and open in Android Studio IDE
 * Firebase
