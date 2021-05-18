@@ -1,7 +1,7 @@
 # iClaim - Android App
 ## University : [San Jose State University](http://www.sjsu.edu/)
 ## Course: Smartphone App development
-## Professor: KaiKai Liu
+## Professor: Dr. KaiKai Liu
 
 ## Team : 15
 Student Name      | 
@@ -17,6 +17,8 @@ Due to the COVID-19 pandemic most of the companies have adapted work from home a
 This android application provides a platform for easy enterprise reimbursements.
 
 ### [Project Proposal doc](https://github.com/ParvathiRPai/SmartPhoneApplication/blob/main/Documentation/CMPE277-Project%20Proposal.pdf)
+
+### [Project Document](Documentation/CMPE277-ProjectDocument.pdf)
 
 ### [Link to Video Demo](https://drive.google.com/file/d/1OWp3jGYVzEpzYkXNri37ipsZdaESnsac/view?usp=sharing)
 ### [Presentation Slides](https://docs.google.com/presentation/d/1zdTLvfJuRFlwzEwINc1C5bkyqbxkEJSGs1TX03U3Xzk/edit?usp=sharing)
@@ -65,6 +67,14 @@ This android application provides a platform for easy enterprise reimbursements.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
 * ChatBot - conversational bot using AWS Lex
+
+### Task Distribution
+| Name | UI Component | Backend Component |
+| --- | --- | -----|
+| Shreya | App Icon, App bar, Dashboard, Add new claim page | Text Detection for the uploaded image using Google ML kit and update Firestore with claim information. |
+| Parvathi | User Authentication screen, Image upload, View Bills | Firebase custom Sign-in, Image upload capability and storing the image in Firestore/Storage in google cloud. |
+| Krishna | Chatbot screen | Using AWS Lex provides conversational interaction features to users and helps navigate the app. |
+| Sania | Text to Speech button | Using android text to speech read claim information from the app screen and make the app convenient. |
 
 ### UI Screenshots
 * Home page
@@ -137,4 +147,5 @@ This android application provides a platform for easy enterprise reimbursements.
 * https://developer.android.com/samples
 * https://docs.aws.amazon.com/sdk-for-android/
 * https://docs.aws.amazon.com/mobile-sdk/index.html
+* https://www.freelogodesign.org/
 
