@@ -18,7 +18,7 @@ This android application provides a platform for easy enterprise reimbursements.
 
 ### [Project Proposal doc](https://github.com/ParvathiRPai/SmartPhoneApplication/blob/main/Documentation/CMPE277-Project%20Proposal.pdf)
 
-### [Project Document](Documentation/CMPE277-ProjectDocument.pdf)
+### [Project Document](https://drive.google.com/file/d/1fh5vEAvNv_RDFZdOUuh_FAF6Fj_AxQ3l/view?usp=sharing)
 
 ### [Link to Video Demo](https://drive.google.com/file/d/1OWp3jGYVzEpzYkXNri37ipsZdaESnsac/view?usp=sharing)
 ### [Presentation Slides](https://docs.google.com/presentation/d/1zdTLvfJuRFlwzEwINc1C5bkyqbxkEJSGs1TX03U3Xzk/edit?usp=sharing)
@@ -67,6 +67,8 @@ This android application provides a platform for easy enterprise reimbursements.
 * Firestore - using firestore to keep track of user balance and link user to the images stored in Firebase Storage
 * Text to Speech - using android provided test to speech library
 * ChatBot - conversational bot using AWS Lex
+
+For implementation details see the [Project Document](https://drive.google.com/file/d/1fh5vEAvNv_RDFZdOUuh_FAF6Fj_AxQ3l/view?usp=sharing).
 
 ### Task Distribution
 | Name | UI Component | Backend Component |
